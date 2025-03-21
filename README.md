@@ -1,33 +1,41 @@
-# GTSRB-German-Traffic-Sign-Recognition
+# German Traffic Sign Recognition with HOG+SVM
 
-In this project, I used Python and TensorFlow to classify traffic signs.
+## Overview
+In this project, I implemented a traffic sign recognition system using HOG (Histogram of Oriented Gradients) feature extraction combined with SVM (Support Vector Machine) classification. This approach provides an efficient and accurate method for recognizing traffic signs from the German Traffic Sign Dataset.
 
-Dataset used: German Traffic Sign Dataset. This dataset has more than 50,000 images of 43 classes. 
+## Dataset
+The German Traffic Sign Dataset contains more than 50,000 images across 43 different classes of traffic signs. The dataset includes various challenges like different lighting conditions, occlusions, and varying distances.
 
-I was able to reach a more than +95% validation accuracy, and a +95% testing accuracy.
+## Key Features
+- **High Accuracy**: Achieves over 96% accuracy on the test set
+- **Efficient Processing**: HOG feature extraction coupled with optimized SVM provides fast prediction
+- **Preprocessing Pipeline**: Includes grayscale conversion, standardization, and feature scaling
+- **User-friendly Interface**: Includes a Gradio web interface for easy testing
 
-I utilized deep neural networks and convolutional neural networks to classify traffic signs. I trained and validated a model so it can classify traffic sign images using the German Traffic Sign Dataset. After the model was trained, I tested out the model on images of German traffic signs I found on the web. The rubric contains "Stand Out Suggestions" for enhancing the project beyond the minimum requirements, of which I believe I accomplished by augmenting the training data and challenging my classifier with "toxic" difficult to read road signs.
-
-The goal of this project was to build a Convolutional Neural Network (CNN) in TensorFlow and Python.
-
-
-
-
-
+## How It Works
+1. **Preprocessing**: Images are resized to 64x64 pixels and converted to grayscale
+2. **Feature Extraction**: HOG features are computed from each image
+3. **Model Training**: An SGD-based SVM classifier is trained on the standardized features
+4. **Recognition**: New images are processed through the same pipeline for classification
 
 ## Dependencies
+- NumPy - For numerical operations
+- OpenCV - For image processing
+- Scikit-learn - For SVM classifier and scaling
+- Scikit-image - For HOG feature extraction
+- Joblib - For model serialization
+- Matplotlib - For visualization
+- Gradio - For interactive web interface
 
-This are the main packages used:
+## Usage
+The project includes two main notebooks:
+- `HOG+SVM.ipynb`: Trains the model and saves it to disk
+- `GUI.ipynb`: Provides a user interface for testing the model with new images
 
- - [Numpy](https://numpy.org/)
- - [Tensorflow](https://www.tensorflow.org/api_docs/python/tf/math/tan)
- - [Python 3.5 or above](https://www.python.org/) 
- 
-Full details on the requirements.txt file.  
+## Results
+Model Accuracy of 96,98%. The model demonstrates robust performance across different traffic sign categories, effectively handling variations in lighting, perspective, and image quality. The HOG+SVM approach provides a good balance between computational efficiency and recognition accuracy.
+
 ## Conclusion
+This project demonstrates that classical computer vision techniques can still achieve impressive results for specific recognition tasks. While deep learning approaches may provide higher accuracy in some cases, the HOG+SVM pipeline remains relevant for applications with limited computational resources or when interpretability is important.
 
-This Project was very effective during the experimentations. In the end, the traffic sign classifier App works pretty well overall with the testing time.
-
-However, the Project some time did not work as good with ramdom sample images from the internet.
-
-Moreover, if a self-driving car needs to find traffic signs in public, it first needs to know where the traffic signs are. For speeding signs, we may need an OCR (object recognition) mechanism that scan across the image with sliding windows to find the candidate signs. This kind of detection mechanism is not covered in this project. 
+For real-world applications, this classification system would need to be paired with a detection algorithm to first locate traffic signs within larger images.
